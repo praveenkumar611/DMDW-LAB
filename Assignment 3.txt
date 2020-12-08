@@ -1,0 +1,87 @@
+Assignment 3
+
+1. Write a Python Program to implement your own myreduce() function which works exactly like Python's built-in function reduce()
+
+In [1]:
+from functools import reduce
+ 
+def do_sum(x1, x2): 
+    return x1 + x2
+
+print(reduce(do_sum, [1, 2, 3, 4]))
+10
+In [2]:
+def do_sum(x1, x2): 
+    return x1 + x2
+
+def my_reduce(func, seq):
+    first = seq[0]
+    for i in seq[1:]:
+        first = func(first, i)
+    return first
+
+print(my_reduce(do_sum, [1, 2, 3, 4]))
+10
+2.Write a Python program to implement your own myfilter() function which works exactly like Python's built-in function filter()
+
+In [3]:
+ages = [5, 12, 17, 18, 24, 32]
+
+def myFunc(x):
+    if x < 18:
+        return False
+    else:
+        return True
+
+adults = filter(myFunc, ages)
+
+for x in adults:
+    print(x)
+18
+24
+32
+Implement List comprehensions to produce the following lists. Write List comprehensions to produce the following Lists
+['x', 'xx', 'xxx', 'xxxx', 'y', 'yy', 'yyy', 'yyyy', 'z', 'zz', 'zzz', 'zzzz']
+['x', 'y', 'z', 'xx', 'yy', 'zz', 'xxx', 'yyy', 'zzz', 'xxxx', 'yyyy', 'zzzz']
+[[2], [3], [4], [3], [4], [5], [4], [5], [6]]
+[[2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7], [5, 6, 7, 8]]
+[(1, 1), (2, 1), (3, 1), (1, 2), (2, 2), (3, 2), (1, 3), (2, 3), (3, 3)]</b>
+In [4]:
+input_list = ['x','y','z']
+result=[]
+for i in input_list:
+    for num in range(1,5):
+        result.append(i*num)
+print(result)
+['x', 'xx', 'xxx', 'xxxx', 'y', 'yy', 'yyy', 'yyyy', 'z', 'zz', 'zzz', 'zzzz']
+In [5]:
+input_list = ['x','y','z']
+result=[]
+for num in range(1,5):
+    for i in input_list:
+    #for num in range(1,5):
+        result.append(i*num)
+print(result)
+['x', 'y', 'z', 'xx', 'yy', 'zz', 'xxx', 'yyy', 'zzz', 'xxxx', 'yyyy', 'zzzz']
+In [6]:
+input_list = [2,3,4]
+result=[]
+for item in input_list:
+    for num in range(0,3):
+        result.append([item+num])
+print(result)
+[[2], [3], [4], [3], [4], [5], [4], [5], [6]]
+In [8]:
+input_list = [2,3,4,5]
+result = [ [item+num for item in input_list] for num in range(0,4) ]
+print((result))
+[[2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7], [5, 6, 7, 8]]
+In [9]:
+input_list=[1,2,3]
+result=[]
+for b in input_list:
+    for a in input_list:
+        result.append((b,a))
+print(result)
+[(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3)]
+In [ ]:
